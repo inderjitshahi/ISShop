@@ -1,0 +1,29 @@
+.no-cart{
+    background:url('/img/emptyCart.svg') no-repeat center;
+    background-size: cover;
+    color: rgb(236, 33, 77);
+    height:85vh ;
+    width: 90%;
+    /* border: 2px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.cart-products{
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+.cart-product{
+    padding: 1rem;
+    border: 2px dotted red;
+    margin: 2rem 3rem;
+}
+.btn{
+    margin-top: 1rem;
+}
+
+ul{
+    list-style: none;
+}
