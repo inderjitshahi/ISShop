@@ -1,7 +1,7 @@
 // import dirname from '../path.js';
 import express from 'express';
 const router = express.Router();
-import {getIndex,getProducts,getProduct,getCheckout,getCart,postCart,getOrders,postCartDelete} from '../controllers/shop.js'
+import {getIndex,getProducts,getProduct,getCart,postCart,getOrders,postCartDelete,postOrders} from '../controllers/shop.js'
 
 router.get('/', getIndex);
 
@@ -15,7 +15,8 @@ router.post('/cart',postCart);
 
 router.get('/orders', getOrders);
 
-router.get('/checkout',getCheckout);
+router.post('/createOrders', postOrders);
+
 
 router.post('/cartDeleteItem',postCartDelete);
 

@@ -65,6 +65,15 @@ a{
 }
 
 
+.not_found{
+  background: url('/img/not_found.svg') no-repeat center;
+  background-size: cover;
+  height: 90vh;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ color: rgb(236, 33, 77);;
+}
 
 /************************* Start  Card **************************/
 .grid {
@@ -76,6 +85,7 @@ a{
   }
   
   .card {
+    text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     width: 25rem;
     margin: 1rem;
@@ -116,4 +126,32 @@ a{
   }
 
 
-/************ End  Card *****************************************/
+/************ End  Card **********************/
+
+
+
+/************ Start Details Page *****************************************/
+.details{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 1rem;
+  border: 1px solid red;
+  border-radius: 1rem;
+  box-shadow: .3rem .3rem rgb(236, 194, 194);
+  padding: 1rem;
+}
+
+.detail-img__img{
+  height: 25rem;
+  width: 20rem;
+  border-radius: 1rem;
+  margin: .75rem 0;
+}
+.detail-description{
+  margin: .75rem 0;
+}
+
+
+
+/************ End Details Page ***************/

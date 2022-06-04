@@ -1,11 +1,38 @@
 <%- include('../includes/head.ejs') %>
 
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/cart.css">
 
 </head>
 
 <body>
 
     <%- include('../includes/navigation.ejs') %>
-
+    <main>
+        <% if(orders.length>0) {%>
+            <div class="cart">
+                <ul class="order-products">
+                    <% orders.forEach(order => {%> 
+                        
+                    <li class="order-product">
+                        <h2>Order ID: <%=order.id%> </h2>
+                        <ul>
+                            <% order.products.forEach(product=>{  %> 
+                                <li><%= product.title %> (<%=product.orderItem.qty %> ) </li>
+                            <% });%> 
+                        </ul>
+                    </li>
+                    <% }); %> 
+                </ul>
+            </div>
+            <!-- <form action="/createOrders" method="POST">
+                <button class="btn" type="submit">Order now</button>
+            </form> -->
+        <% } else { %>
+            <div class="no-order">
+                <h1>No Orders you Placed</h1>
+            </div>
+        <% } %> 
+    </main>
+    
     <%- include('../includes/end.ejs') %>
