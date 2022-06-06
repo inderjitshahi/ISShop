@@ -1,6 +1,7 @@
 <%- include('../includes/head.ejs') %>
 
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/cart.css">
 
     </head>
     <body>
@@ -37,7 +38,9 @@
                             <% }); %>
                     </div>
                     <% } else{ %>
-                        <h1>No Products Found!</h1>
+                        <div class="no-order">
+                            <h1>No Products Found!</h1>
+                        </div>
                         <% } %>
             </main>
 

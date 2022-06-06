@@ -10,15 +10,15 @@
     <%- include('../includes/navigation.ejs') %>
     <main>
         <% if(orders.length>0) {%>
-            <div class="cart">
+            <div class="orders">
                 <ul class="order-products">
                     <% orders.forEach(order => {%> 
                         
-                    <li class="order-product">
-                        <h2>Order ID: <%=order.id%> </h2>
+                    <li class="order">
+                        <h2 class="order-id">Order ID: <%=order._id%> </h2>
                         <ul>
-                            <% order.products.forEach(product=>{  %> 
-                                <li><%= product.title %> (<%=product.orderItem.qty %> ) </li>
+                            <% order.products.forEach(p=>{  %> 
+                                <li class="order-name"><%=p.productData.title%> (<%=p.qty %>)</li>
                             <% });%> 
                         </ul>
                     </li>
