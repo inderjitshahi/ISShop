@@ -5,7 +5,6 @@ import crypto from 'crypto';
 import { validationResult } from 'express-validator';
 
 // import otp from 'otp-generator';
-const API_KEY = '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';
 sgMail.setApiKey(API_KEY);
 
 

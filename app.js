@@ -17,7 +17,7 @@ const mongoDbStore = connectMongo(session);
 import csrf from 'csurf';
 import flash from 'connect-flash';
 
-const MONGODB_URI = 'mongodb+srv://inderjitshahi:ZDUWg0gH3mg7tAoP@cluster0.urwqb.mongodb.net/shop?retryWrites=true';
+
 
 const app = express();
 
