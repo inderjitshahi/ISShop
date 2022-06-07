@@ -1,14 +1,15 @@
 // import { Product } from  "../models/product.js";
 import url from 'url';
 import Product from '../models/product.js';
-
+import { validationResult } from 'express-validator';
 
 export function getAddProduct(req, res, next) {
     res.render('admin/editProduct', {
         pageTitle: 'Add Product',
         path: '/admin/addProduct',
-        editing: false,  
-        isAuthenticated:req.session.isLoggedIn,   
+        editing: false,
+        hasError: false,
+        errorMessage: null,
     });
 }
 
@@ -19,6 +20,36 @@ export function postAddProduct(req, res, next) {
     const description = req.body.description;
     const userId = req.user._id;   //type of Object Id
     const product = new Product({ title: title, price: price, imgUrl: imgUrl, description: description, userId: userId });
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(442).render('admin/editProduct', {
+            path: '/admin/editProduct',
+            pageTitle: 'Add Product',
+            editing: false,
+            hasError: true,
+            prod: {
+                title: title,
+                imgUrl: imgUrl,
+                price: price,
+                description: description,
+            },
+            errorMessage: errors.array()[0].msg,
+        });
+    }
+    // if(!image){
+    //     return res.status(442).render('admin/editProduct', {
+    //         path: '/admin/editProduct',
+    //         pageTitle: 'Add Product',
+    //         editing:false,
+    //         errorMessage: errors.array()[0].msg,
+    //         oldInput:{
+    //           email:email,
+    //           password:password,
+    //           confirmPassword:req.body.confirmPassword
+    //         },
+    //         validationErrors: errors.array(),
+    //       });
+    // }
     product
         .save()
         .then((result) => {
@@ -41,7 +72,8 @@ export function getEditProduct(req, res, next) {
                 path: '/admin/addProduct',
                 editing: editMode,
                 prod: product,
-                isAuthenticated:req.session.isLoggedIn,
+                hasError: false,
+                errorMessage: null,
             });
         })
         .catch(err => {
@@ -56,7 +88,23 @@ export function postEditProduct(req, res, next) {
     const updatedImgUrl = req.body.imgUrl;
     const updatedPrice = req.body.price;
     const updatedDescription = req.body.description;
-
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(442).render('admin/editProduct', {
+            path: '/admin/editProduct',
+            pageTitle: 'Edit Product',
+            editing: true,
+            hasError: true,
+            prod: {
+                title: updatedTitle,
+                imgUrl: updatedImgUrl,
+                price: updatedPrice,
+                description: updatedDescription,
+                _id: prodId,
+            },
+            errorMessage: errors.array()[0].msg,
+        });
+    }
     Product.findById(prodId)
         .then(product => {
             product.title = updatedTitle;
@@ -84,6 +132,7 @@ export function postDeleteProduct(req, res, next) {
 }
 
 export function getProducts(req, res, next) {
+
     Product
         .find()
         .then(products => {
@@ -91,7 +140,6 @@ export function getProducts(req, res, next) {
                 prods: products,
                 pageTitle: 'Admin Products',
                 path: '/admin/products',
-                isAuthenticated:req.session.isLoggedIn,
             });
         })
         .catch(err => {

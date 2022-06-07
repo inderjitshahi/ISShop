@@ -6,18 +6,35 @@
 
         <%- include('../includes/navigation.ejs') %>
         <main class="login-main">
-                <form action="/login" method="POST" class="login-form">
+            <form action="/login" method="POST" class="login-form">
+                    <% if(errorMessage){ %> 
+                      <div class="error-message"><%=errorMessage%></div>
+                      <% } %>   
                     <ul class="login-items">
                         <li class="login-item">
-                            <label for="user">User/Email</label>
-                            <input type="text" name="user">
+                            <label for="email">User/Email</label>
+                            <input 
+                            class="<%=validationErrors.find(e=> e.param==='email')?'invalid':''%>"
+                            type="text" 
+                            name="email" 
+                            id="email"
+                            value="<%=oldInput.email%>">
                         </li>
                         <li class="login-item">
                             <label for="password">Password</label>
-                            <input type="password" name="password">
+                            <input 
+                            class="<%=validationErrors.find(e=> e.param==='password')?'invalid':''%>"
+                            type="password" 
+                            name="password" 
+                            id="password"
+                            value="<%=oldInput.password%>">
                         </li>
-                    </ul>  
+                    </ul> 
+                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                     <button class="btn" type="submit">Login</button>
+                    <div class="btn centered" id="reset-btn">
+                        <a href="/reset">Reset Password</a>
+                    </div>
                 </form>
         </main>
 

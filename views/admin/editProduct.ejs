@@ -2,37 +2,52 @@
 
     <link rel="stylesheet" href="/css/form.css">
     <link rel="stylesheet" href="/css/main.css">
-    
-</head>
-<body>
-    <%- include('../includes/navigation.ejs') %>
+
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
 
 
-    <main class="main">
-        <form action="/admin/<%if(editing){%>editProduct<%}else{%>addProduct<%}%>" class="product-form" method="POST">
-            <div class="form-control">
-                <label for="title">Title</label>
-                <input type="text" name="title" id="title" value="<%if(editing){%><%=prod.title%><%}%>">
-            </div>
-            <div class="form-control">
+        <% if(errorMessage){ %> 
+            <div class="error-message"><%=errorMessage%></div>
+            <% } %>  
+            <main class="main">
+                <form action="/admin/<%if(editing){%>editProduct<%}else{%>addProduct<%}%>" class="product-form"
+                    method="POST" enctype="multipart/form-data">
+                    <div class="form-control">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" value="<%if(editing || hasError){%><%=prod.title%><%}%>">
+                    </div>
+                    <!-- <div class="form-control">
                 <label for="imgUrl">Image Url</label>
                 <input type="text" name="imgUrl" id="imgUrl"
                 value="<%if(editing){%><%=prod.imgUrl%><%}%>">
-            </div>
-            <div class="form-control">
-                <label for="price">Price</label>
-                <!-- Be CareFull about speaces in value field if tyoe is Number -->
-                <input type="number" name="price" id="price" step="0.01" value="<%if(editing){%><%=prod.price%><%}%>"> 
-            </div>
-            <div class="form-control">
-                <label for="description">Description</label>
-                <textarea name="description" id="description" rows="5"><%if(editing){%><%=prod.description%><%}%></textarea>
-            </div>
-            <%if(editing){ %>
-                <input type="hidden" value="<%=prod._id%>" name="productId">
-            <%}%>
-            <button class="form-control__btn" type="submit"><%if(editing){%>Update Product<%}else{%>Add Product<%}%></button>
-        </form>
-    </main>
+            </div> -->
+                    <div class="form-control">
+                        <label for="imgUrl">Image</label>
+                        <input type="text" name="imgUrl" id="imgUrl"
+                        value="<%if(editing||hasError){%><%=prod.imgUrl%><%}%>">
+                    </div>
+                    <div class="form-control">
+                        <label for="price">Price</label>
+                        <!-- Be CareFull about speaces in value field if tyoe is Number -->
+                        <input type="number" name="price" id="price" step="0.01"
+                            value="<%if(editing||hasError){%><%=prod.price%><%}%>">
+                    </div>
+                    <div class="form-control">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description"
+                            rows="5"><%if(editing||hasError){%><%=prod.description%><%}%></textarea>
+                    </div>
+                    <%if(editing){ %>
+                        <input type="hidden" value="<%=prod._id%>" name="productId">
+                        <%}%>
+                            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                            <button class="form-control__btn" type="submit">
+                                <%if(editing||hasError){%>Update Product<%}else{%>Add Product<%}%>
+                            </button>
+                </form>
+            </main>
 
-<%- include('../includes/end.ejs') %>
+            <%- include('../includes/end.ejs') %>
