@@ -3,7 +3,9 @@ import bcrypt from 'bcryptjs';
 import sgMail from '@sendgrid/mail';
 import crypto from 'crypto';
 import { validationResult } from 'express-validator';
-
+import dotenv from 'dotenv';
+dotenv.config();
+const API_KEY = process.env.SENDGRID_API_KEY;
 // import otp from 'otp-generator';
 sgMail.setApiKey(API_KEY);
 
@@ -67,7 +69,9 @@ export function getNewPassword(req, res, next) {
         });
       }
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      next(new Error(err));
+    });
 
 };
 
@@ -121,7 +125,7 @@ export function postLogin(req, res, next) {
             req.session.isLoggedIn = true;
             req.session.user = user;
             return req.session.save(err => {
-              console.log(err);
+              if(err){ console.log(err); }
               res.redirect('/');
             });
           } else {
@@ -136,11 +140,15 @@ export function postLogin(req, res, next) {
           }
         })
         .catch(err => {
-          console.log(err);
+          if(err){
+            console.log(err);
+          }
           res.redirect('/login');
         })
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      next(new Error(err));
+    });
 };
 
 export function postSignup(req, res, next) {
@@ -186,7 +194,7 @@ export function postSignup(req, res, next) {
       console.log("Mail Sent");
     })
     .catch(err => {
-      console.log(err);
+      next(new Error(err));
     });
 };
 
@@ -236,7 +244,9 @@ export function postReset(req, res, next) {
         console.log("Mail Sent");
         return res.redirect('/');
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        next(new Error(err));
+      });
   });
 };
 
@@ -270,6 +280,6 @@ export function postNewPassword(req, res, next) {
       return res.redirect('/login');
     })
     .catch(err => {
-      console.log(err);
+      next(new Error(err));
     })
 }

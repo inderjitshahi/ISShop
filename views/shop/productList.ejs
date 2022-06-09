@@ -20,10 +20,10 @@
                                     </h1>
                                 </header>
                                 <div class="card__image">
-                                    <img src="<%=prod.imgUrl%>" alt="<%=prod.title %>">
+                                    <img src="/<%=prod.imgUrl%>" alt="<%=prod.title %>">
                                 </div>
                                 <div class="card__content">
-                                    <h2 class="product__price">$<%=prod.price%>
+                                    <h2 class="product__price">₹<%=prod.price%>
                                     </h2>
                                     <p class="product__description">
                                         <%=prod.description%>
@@ -40,6 +40,7 @@
                             </article>
                             <% }); %>
                     </div>
+                    <%- include('../includes/pagination.ejs',{currentPage:currentPage,nextPage:nextPage,previousPage:previousPage,lastPage:lastPage,hasNextPage:hasNextPage,hasPreviousPage:hasPreviousPage}) %>
                     <% }else{ %>
                         <div class="no-order" >
                             <h1>No Products Found!</h1>

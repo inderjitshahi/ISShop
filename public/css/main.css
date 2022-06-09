@@ -13,7 +13,9 @@ font-family:sans-serif;
 a{
   text-decoration: none;
 }
-
+.centered{
+  text-align: center;
+}
 input{
   padding: .5rem;
   width: 100%;
@@ -66,18 +68,34 @@ ul{
   color: blue;
   border-radius: .2rem;
   font-size: 1rem;
+  cursor: pointer;
 }
 .btn:active,
-.btn:hover{
+.btn:hover,
+.pagination a.active{
   background-color: blue;
   border: 2px solid rgb(173, 173, 237);
   color: rgb(228, 228, 238);
 }
-
-.centered{
+.pagination{
   text-align: center;
+  padding: 1rem 0;
+}
+.pagination a{
+  border: 2px solid blue;
+  background-color: rgb(221, 221, 248);
+  color: blue;
+  padding: .25rem;
+  font-size: large;
+  text-decoration: none;
+  margin: 0 1rem;
 }
 
+
+
+/* .pagination a:hover{
+ 
+} */
 
 .not_found{
   background: url('/img/not_found.svg') no-repeat center;

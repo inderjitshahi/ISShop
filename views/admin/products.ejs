@@ -2,6 +2,7 @@
 
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/cart.css">
+    <script defer src="/js/admin.js"></script>
 
     </head>
     <body>
@@ -19,10 +20,10 @@
                                     </h1>
                                 </header>
                                 <div class="card__image">
-                                    <img src="<%=prod.imgUrl%>" alt="<%=prod.title %>">
+                                    <img src="/<%=prod.imgUrl%>" alt="<%=prod.title %>">
                                 </div>
                                 <div class="card__content">
-                                    <h2 class="product__price">$<%=prod.price%>
+                                    <h2 class="product__price">₹<%=prod.price%>
                                     </h2>
                                     <p class="product__description">
                                         <%=prod.description%>
@@ -30,10 +31,9 @@
                                 </div>
                                 <div class="card__actions">
                                         <a class="btn" href="/admin/editProduct/<%=prod._id%>?edit=true" >Edit</a>
-                                        <form class="form-delete" action="/admin/deleteProduct" method="POST">
-                                            <button type="submit" class="btn" value="<%=prod._id%>" name="productId">Delete</button>
-                                            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                                        </form>
+                                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                        <input type="hidden" name="productId" value="<%=prod._id%>">
+                                        <button type="button" class="btn delete-btn" >Delete</button>
                                 </div>
                             </article>
                             <% }); %>
@@ -46,3 +46,4 @@
             </main>
 
             <%- include('../includes/end.ejs') %>
+ 

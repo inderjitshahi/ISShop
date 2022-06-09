@@ -37,12 +37,12 @@ router.post('/signup', [
         .isLength({ min: 3 })
         .isAlphanumeric()
         .trim(),
-    check('confirmPssword').custom((value, { req }) => {
+    check('confirmPassword').custom((value, { req }) => {
         if (value !== req.body.password) {
             throw new Error('Passwords Do Not Match')
         }
         return true;
-    })
+    }),
 ], postSignup);
 
 

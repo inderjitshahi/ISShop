@@ -1,6 +1,6 @@
 // import dirname from '../path.js'
 import express from 'express';
-import { getAddProduct, postAddProduct, getProducts, getEditProduct, postEditProduct, postDeleteProduct } from '../controllers/admin.js'
+import { getAddProduct, postAddProduct, getProducts, getEditProduct, postEditProduct, deleteProduct } from '../controllers/admin.js'
 import isAuth from '../middleware/isAuth.js'
 import { check } from 'express-validator';
 
@@ -19,35 +19,29 @@ router.post('/admin/addProduct',[
     .isString()
     .isLength({min:3})
     .trim(),
-    check('imgUrl',"Enter a Valid Url")
-    .isURL(),
     check('price',"Enter a Valid Price")
     .isFloat()
     .trim(),
     check('description',"Enter a Valid Description")
     .isLength({min:5,max:255})
     .trim(),
-
 ],isAuth ,postAddProduct);
 
-router.get('/admin/editProduct/:productId', isAuth, getEditProduct);
+router.get('/admin/editProduct/:productId', getEditProduct);
 
 router.post('/admin/editProduct',[
     check('title',"Enter a Valid Title")
     .isString()
     .isLength({min:3})
     .trim(),
-    check('imgUrl',"Enter a Valid Url")
-    .isURL(),
     check('price',"Enter a Valid Price")
     .isFloat()
     .trim(),
     check('description',"Enter a Valid Description")
     .isLength({min:5,max:255})
     .trim(),
+],isAuth ,postEditProduct);
 
-], postEditProduct);
-
-router.post('/admin/deleteProduct', postDeleteProduct);
+router.delete('/admin/product/:productId',deleteProduct);
 
 export default router;
