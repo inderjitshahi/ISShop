@@ -22,15 +22,15 @@
                                 <input type="text" name="title" id="title"
                                     value="<%if(editing || hasError){%><%=prod.title%><%}%>">
                             </div>
-                            <div class="form-control">
+                            <!-- <div class="form-control">
                                 <label for="image">Image</label>
                                 <input type="file" name="image" id="image">
+                            </div> -->
+                            <div class="form-control">
+                                <label for="imgUrl">Image URL</label>
+                                <input type="text" name="imgUrl" id="imgUrl"
+                                    value="<%if(editing||hasError){%><%=prod.imgUrl%><%}%>">
                             </div>
-                            <!-- <div class="form-control">
-                        <label for="imgUrl">Image</label>
-                        <input type="text" name="imgUrl" id="imgUrl"
-                        value="<%if(editing||hasError){%><%=prod.imgUrl%><%}%>">
-                    </div> -->
                             <div class="form-control">
                                 <label for="price">Price</label>
                                 <!-- Be CareFull about speaces in value field if tyoe is Number -->

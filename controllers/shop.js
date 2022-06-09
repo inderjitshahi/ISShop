@@ -109,11 +109,16 @@ export function getCart(req, res, next) {
 
 export function postCart(req, res, next) {
     const prodId = req.body.productId;
-    const product = Product.findById(prodId)
+    Product.findById(prodId)
         .then(product => {
-            return req.user.addToCart(product);
+            if(!req.user){
+                return res.redirect('/login');
+            }
+                return req.user.addToCart(product);
         })
-        .then(result => { return res.redirect('/cart'); })
+        .then(result => {
+            if(result) return res.redirect('/cart'); 
+        })
         .catch(err =>next(new Error(err)));
 }
 

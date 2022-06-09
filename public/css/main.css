@@ -224,4 +224,10 @@ ul{
 #reset-btn {
     margin-top: .5rem;
 }
+
+.logout-form button{
+  color: red;
+  font-weight: bold;
+  font-size: 75%;
+}
 /************ End Login ***************************************/

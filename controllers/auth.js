@@ -201,7 +201,7 @@ export function postSignup(req, res, next) {
 export function postLogout(req, res, next) {
   // res.isLoggedIn=true;   //this data will die as soon  as another res is init
   req.session.destroy((err) => {
-    console.log(err);
+    // console.log(err);
     res.redirect('/');
   });
 };
