@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import fs from 'fs';
 import multer from 'multer';
 import adminRoutes from './routes/admin.js';
 import shopRoutes from './routes/shop.js';
@@ -10,6 +11,11 @@ import { get404, get500 } from './controllers/error.js';
 import User from './models/user.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import helmet from 'helmet';
+import compress from 'compression';
+import morgan from 'morgan';
+
+
 dotenv.config();
 
 import session from 'express-session';
@@ -18,10 +24,18 @@ const mongoDbStore = connectMongo(session);
 
 import csrf from 'csurf';
 import flash from 'connect-flash';
+import { Stream } from 'stream';
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
 const app = express();
+
+const accessLogStream =fs.createWriteStream(path.join(dirname,'access.log'),{flags:'a'});
+
+app.use(helmet());
+app.use(compress());
+app.use(morgan('combined',{stream:accessLogStream}));
+
 
 const store = new mongoDbStore({
     uri: MONGODB_URI,
@@ -126,6 +140,6 @@ app.use((error, req, res, next) => {
 mongoose
     .connect(MONGODB_URI)
     .then(result => {
-        app.listen(3000);
+        app.listen(process.env.PORT || 3000);
     })
     .catch(err => { console.log(err); });
