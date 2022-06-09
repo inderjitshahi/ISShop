@@ -30,11 +30,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 
 const app = express();
 
-const accessLogStream =fs.createWriteStream(path.join(dirname,'access.log'),{flags:'a'});
 
-app.use(helmet());
-app.use(compress());
-app.use(morgan('combined',{stream:accessLogStream}));
 
 
 const store = new mongoDbStore({
@@ -122,6 +118,12 @@ app.use(adminRoutes);
 app.use(shopRoutes);
 app.use(authRoutes);
 app.use(get404);
+
+const accessLogStream =fs.createWriteStream(path.join(dirname,'access.log'),{flags:'a'});
+
+app.use(helmet());
+app.use(compress());
+app.use(morgan('combined',{stream:accessLogStream}));
 
 
 //General Error handling middleware
