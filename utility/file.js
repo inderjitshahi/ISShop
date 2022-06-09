@@ -1,7 +1,8 @@
 import fs from 'fs';
 
 export function deleteFile(filePath){
-    fs.unlink(filePath,(err)=>{
+    console.log(filePath);
+    fs.unlink('\\'+filePath,(err)=>{
         if(err){throw Error(err);}
     })
 }
