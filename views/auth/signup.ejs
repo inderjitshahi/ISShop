@@ -5,40 +5,40 @@
 <body>
    <%- include('../includes/navigation.ejs') %>
    
-   <main class="login-main">
+   <main class="container-fluid mt-5 h4">
         <% if(errorMessage){ %> 
             <div class="error-message"><%=errorMessage%></div>
             <% } %> 
         <form class="login-form" action="/signup" method="POST" novalidate>
-            <div class="form-control login-item">
+            <div class="login-item">
                 <label for="email">E-Mail</label>
                 <input 
-                class="<%=validationErrors.find(e=> e.param==='email')?'invalid':''%>"
+                class="<%=validationErrors.find(e=> e.param==='email')?'invalid':''%> form-control"
                 type="email"
                 name="email" 
                 id="email" 
                 value="<%=oldInput.email%>">
             </div>
-            <div class="form-control login-item">
+            <div class="login-item">
                 <label for="password">Password</label>
                 <input 
-                class="<%=validationErrors.find(e=> e.param==='password')?'invalid':''%>"
+                class="<%=validationErrors.find(e=> e.param==='password')?'invalid':''%> form-control"
                 type="password" 
                 name="password" 
                 id="password" 
                 value="<%=oldInput.password%>">
             </div>
-            <div class="form-control login-item">
+            <div class=" login-item">
                 <label for="confirmPassword">Confirm Password</label>
                 <input 
-                class="<%=validationErrors.find(e=> e.param==='confirmPssword')?'invalid':''%>"
+                class="<%=validationErrors.find(e=> e.param==='confirmPssword')?'invalid':''%> form-control"
                 type="password" 
                 name="confirmPassword" 
                 id="confirmPassword" 
                 value="<%=oldInput.confirmPassword%>">
             </div>
             <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-            <button class="btn" type="submit">SignUP</button>
+            <button class="btn btn-outline-primary btn-lg" type="submit">SignUP</button>
         </form>
     </main>
 <%- include('../includes/end.ejs') %>

@@ -30,10 +30,10 @@
                                     </p>
                                 </div>
                                 <div class="card__actions">
-                                    <a href="/products/<%= prod._id %>" class="btn">Details</a>
+                                    <a href="/products/<%= prod._id %>" class="btn btn-outline-primary" role="button">Details</a>
                                     <form action="/cart" method="post">
                                         <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                                        <button class="btn" type="submit">Add To Cart</button>
+                                        <button class="btn btn-outline-primary" type="submit">Add To Cart</button>
                                         <input type="hidden" name="productId" value="<%=prod._id%>">
                                     </form>
                                 </div>

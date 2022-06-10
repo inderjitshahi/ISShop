@@ -13,7 +13,7 @@
                 <% if(prods.length> 0) { %>
                     <div class="grid">
                         <% prods.forEach((prod)=>{ %>
-                            <article class="card product-item">
+                            <article class="card">
                                 <header class="card__header">
                                     <h1 class="product__title">
                                         <%=prod.title %>
@@ -30,10 +30,10 @@
                                     </p>
                                 </div>
                                 <div class="card__actions">
-                                        <a class="btn" href="/admin/editProduct/<%=prod._id%>?edit=true" >Edit</a>
+                                        <a class="btn btn-outline-primary" href="/admin/editProduct/<%=prod._id%>?edit=true" role="button">Edit</a>
                                         <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                                         <input type="hidden" name="productId" value="<%=prod._id%>">
-                                        <button type="button" class="btn delete-btn" >Delete</button>
+                                        <button type="button" class=" delete-btn btn btn-outline-danger" >Delete</button>
                                 </div>
                             </article>
                             <% }); %>

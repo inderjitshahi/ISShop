@@ -13,7 +13,7 @@
                     <ul class="cart-products">
                         <% products.forEach(prod=> {%>
 
-                            <li class="cart-product">
+                            <li class="cart-product h3">
                                 <p class="cart-title">
                                     <%=prod.productId.title%>
                                 </p>
@@ -28,7 +28,7 @@
                     </h2>
                 </div>
                 <div class="centered">
-                    <button class="btn" id="order-btn">Pay</button>
+                    <button class="btn btn-outline-success btn-lg" id="order-btn">Pay</button>
                     <script src="https://js.stripe.com/v3/"></script>
                     <script>
                         const stripe = Stripe('pk_live_51L8GQISIwKLHciGufNublySIHaC61zZFKRYw6jEARyjWKb1HeQTpy4cJDRG29siBqbvgjyKObJSid5Ya3dUw09Zk0013NqYkYv');

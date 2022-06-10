@@ -3,31 +3,37 @@ margin: 0;
 padding: 0;
 box-sizing: inherit;
 }
+input{
+  margin: 1rem 0;
+}
 html {
 box-sizing: border-box;
 }
 body{
 font-family:sans-serif;
 }
+button{
+  margin: .5rem .5rem;
+}
 
 a{
+  margin: .5rem .5rem;
   text-decoration: none;
 }
 .centered{
   text-align: center;
 }
-input{
-  padding: .5rem;
-  width: 100%;
-}
 ul{
   list-style: none;
 }
-.login-item .invalid{
+li{
+  list-style: none;
+}
+/* .login-item .invalid{
   border: 2px solid  red;
   background-color: rgb(250, 231, 231);
-}
-.main-header{
+} */
+/* .main-header{
     width: 100%;
     height: 3rem;
     background-color: rgb(20, 17, 21);
@@ -59,9 +65,9 @@ ul{
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
-}
+} */
 
-.btn{
+/* .btn{
   padding: .5rem 3rem;
   border: 2px solid blue;
   background-color: rgb(221, 221, 248);
@@ -69,15 +75,17 @@ ul{
   border-radius: .2rem;
   font-size: 1rem;
   cursor: pointer;
-}
-.btn:active,
-.btn:hover,
+} */
+/* .btn:active,
+.btn:hover,*/
 .pagination a.active{
   background-color: blue;
   border: 2px solid rgb(173, 173, 237);
   color: rgb(228, 228, 238);
-}
+} 
 .pagination{
+  /* display: flex;
+  padding-top: 5rem; */
   text-align: center;
   padding: 1rem 0;
 }
@@ -121,12 +129,12 @@ ul{
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     width: 25rem;
     margin: 1rem;
-    height: 30rem;
+    height: 33rem;
   }
   
   .card__header,
   .card__content {
-    padding: 1rem;
+    padding: .5rem;
   }
   
   .card__header h1,
@@ -153,9 +161,9 @@ ul{
   }
   
 
-  .card__actions a {
+  /* .card__actions a {
       margin: 0 0.25rem;
-  }
+  } */
 
 
 /************ End  Card **********************/
@@ -190,15 +198,11 @@ ul{
 
 
 /************ Start Login *****************************************************/
-.login-main{
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.form-main{
+/* width: 25rem; */
 }
 
-.login-form{
+/* .login-form{
   border: 2px solid  black;
   display: flex;
   flex-direction: column;
@@ -206,8 +210,8 @@ ul{
   border-radius: .5rem;
   font-size: large;
   box-shadow: 4px 4px 2px grey;
-}
-.login-item{
+} */
+/* .login-item{
   margin: 1rem 0;
 }
 .login-item input{
@@ -216,8 +220,8 @@ ul{
 .error-message{
   color: red;
   font-weight: bold;
-}
-#reset-btn a{
+} */
+/* #reset-btn a{
   color: red;
     margin-top: .5rem;
 }
@@ -229,5 +233,5 @@ ul{
   color: red;
   font-weight: bold;
   font-size: 75%;
-}
+} */
 /************ End Login ***************************************/

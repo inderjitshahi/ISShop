@@ -6,20 +6,18 @@
 
         <%- include('../includes/navigation.ejs') %>
             <main class="login-main">
-                <form action="/reset" method="POST" class="login-form">
+                <form action="/reset" method="POST" class="login-form container-fluid mt-5 h4">
                     <% if(errorMessage){ %>
                         <div class="error-message">
                             <%=errorMessage%>
                         </div>
                         <% } %>
-                            <ul class="login-items">
                                 <li class="login-item">
                                     <label for="email">User/Email</label>
-                                    <input type="text" name="email" id="email">
+                                    <input type="text" name="email" id="email" class="form-control">
                                 </li>
-                            </ul>
                             <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                            <button class="btn" type="submit">Reset Password</button>
+                            <button class="btn btn-success btn-lg" type="submit">Reset Password</button>
                 </form>
             </main>
 

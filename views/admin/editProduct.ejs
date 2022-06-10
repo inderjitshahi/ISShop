@@ -14,39 +14,39 @@
                     <%=errorMessage%>
                 </div>
                 <% } %>
-                    <main class="main">
+                    <main class="main h4">
                         <form action="/admin/<%if(editing){%>editProduct<%}else{%>addProduct<%}%>" class="product-form"
                             method="POST" enctype="multipart/form-data">
-                            <div class="form-control">
+                            <div>
                                 <label for="title">Title</label>
-                                <input type="text" name="title" id="title"
+                                <input type="text" name="title" id="title" class="form-control"
                                     value="<%if(editing || hasError){%><%=prod.title%><%}%>">
                             </div>
                             <!-- <div class="form-control">
                                 <label for="image">Image</label>
                                 <input type="file" name="image" id="image">
                             </div> -->
-                            <div class="form-control">
+                            <div >
                                 <label for="imgUrl">Image URL</label>
-                                <input type="text" name="imgUrl" id="imgUrl"
+                                <input type="text" name="imgUrl" id="imgUrl" class="form-control"
                                     value="<%if(editing||hasError){%><%=prod.imgUrl%><%}%>">
                             </div>
-                            <div class="form-control">
+                            <div >
                                 <label for="price">Price</label>
                                 <!-- Be CareFull about speaces in value field if tyoe is Number -->
-                                <input type="number" name="price" id="price" step="0.01"
+                                <input type="number" name="price" id="price" step="0.01" class="form-control"
                                     value="<%if(editing||hasError){%><%=prod.price%><%}%>">
                             </div>
-                            <div class="form-control">
+                            <div >
                                 <label for="description">Description</label>
-                                <textarea name="description" id="description"
+                                <textarea name="description" id="description" class="form-control"
                                     rows="5"><%if(editing||hasError){%><%=prod.description%><%}%></textarea>
                             </div>
                             <%if(editing){ %>
                                 <input type="hidden" value="<%=prod._id%>" name="productId">
                                 <%}%>
                                     <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                                    <button class="form-control__btn" type="submit">
+                                    <button class="btn btn-success btn-lg" type="submit">
                                         <%if(editing||hasError){%>Update Product<%}else{%>Add Product<%}%>
                                     </button>
                         </form>

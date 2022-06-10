@@ -5,35 +5,33 @@
     <body>
 
         <%- include('../includes/navigation.ejs') %>
-        <main class="login-main">
-            <form action="/login" method="POST" class="login-form">
+        <main class="container-fluid mt-5 h4">
+            <form action="/login" method="POST" >
                     <% if(errorMessage){ %> 
                       <div class="error-message"><%=errorMessage%></div>
-                      <% } %>   
-                    <ul class="login-items">
-                        <li class="login-item">
+                      <% } %>  
+                      <div class="form-group"> 
                             <label for="email">User/Email</label>
                             <input 
-                            class="<%=validationErrors.find(e=> e.param==='email')?'invalid':''%>"
+                            class="<%=validationErrors.find(e=> e.param==='email')?'invalid':''%> form-control"
                             type="text" 
                             name="email" 
                             id="email"
                             value="<%=oldInput.email%>">
-                        </li>
-                        <li class="login-item">
+                      </div>
+                      <div class="form-group">
                             <label for="password">Password</label>
                             <input 
-                            class="<%=validationErrors.find(e=> e.param==='password')?'invalid':''%>"
+                            class="<%=validationErrors.find(e=> e.param==='password')?'invalid':''%> form-control"
                             type="password" 
                             name="password" 
                             id="password"
                             value="<%=oldInput.password%>">
-                        </li>
-                    </ul> 
+                      </div>
                     <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                    <button class="btn" type="submit">Login</button>
-                    <div class="btn centered" id="reset-btn">
-                        <a href="/reset">Reset Password</a>
+                    <button class="btn btn-outline-primary btn-lg" type="submit">Login</button>
+                    <div id="reset-btn">
+                        <a href="/reset" class="btn btn-warning btn-lg" role="button" >Reset Password</a>
                     </div>
                 </form>
         </main>
@@ -43,3 +41,8 @@
 
 
     <%- include('../includes/end.ejs') %>
+
+
+
+
+

@@ -14,7 +14,7 @@
                         <ul class="cart-products">
                             <% products.forEach(prod=> {%>
 
-                                <li class="cart-product">
+                                <li class="cart-product h3">
                                     <p class="cart-title">
                                         <%=prod.productId.title%>
                                     </p>
@@ -22,7 +22,7 @@
                                     <form action="/cartDeleteItem" method="POST">
                                         <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                                         <input type="hidden" value="<%=prod.productId._id%>" name="productId">
-                                        <button type="submit" class="btn">Delete</button>
+                                        <button type="submit" class="btn  btn-outline-danger btn-lg">Delete</button>
                                     </form>
                                 </li>
                                 <% }); %>
@@ -33,7 +33,7 @@
                             <button class="btn" type="submit">Order now</button>
                         </form> -->
                         <div class="centered">
-                            <a href="/checkout" class="btn">Order Now</a>
+                            <a href="/checkout" class="btn btn-outline-primary btn-lg" role="button">Order Now</a>
                         </div>
                     <% } else { %>
                         <div class="no-cart">
