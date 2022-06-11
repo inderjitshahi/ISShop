@@ -11,6 +11,8 @@
 Developed using MERN Stack, an E-commerce website that allows to Buy/Sell products, designed to strengthen small vendors to 
 enhance their business, fully encrypted with security features. 
 
+Note: Never make payment, as this only a prototype website only.
+
 ## Deployment
 
 This project is deployed using Heroku. You can visit the follwing link to use the app
