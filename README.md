@@ -15,9 +15,8 @@ enhance their business, fully encrypted with security features.
 
 This project is deployed using Heroku. You can visit the follwing link to use the app
 
-```bash
-  https://isshop.herokuapp.com
-```
+
+  [Website](https://isshop.herokuapp.com)
 
 
 ## Features
