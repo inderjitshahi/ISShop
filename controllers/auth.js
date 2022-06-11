@@ -184,9 +184,22 @@ export function postSignup(req, res, next) {
     .then(result => {
       return sgMail.send({
         to: email,
-        from: "inderjitshahi_mc20a7_13@dtu.ac.in",
+        from: {
+          name: 'ISShop',
+          email: 'inderjitshahi_mc20a7_13@dtu.ac.in',
+        },
         subject: "Welcome To ISShop",
-        html: "<h1>Dear Customer, Welcome to ISShop</h1>",
+        html: `
+          <div style="background-color:pink; padding: 1rem;">
+            <h1> <b>Dear Customer, Welcom to iSSop!!</b> </h1>
+            <p>We are pleased to have you</p>
+            <hr>
+            <p style="color:red;">Your Username is: ${email}</p>
+            <p>You can reset your Password at login page, if needed.</p>
+            <br>
+            <p>Happy Shopping!!</p>
+          </div>
+        `,
       });
     })
     .then(result => {
