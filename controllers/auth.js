@@ -29,7 +29,7 @@ export function getLogin(req, res, next) {
     path: '/login',
     isAuthenticated: false,
     errorMessage: message,
-    oldInput:{email:'', password:'',},
+    oldInput: { email: '', password: '', },
     validationErrors: [],
   });
 };
@@ -87,7 +87,7 @@ export function getSignup(req, res, next) {
     pageTitle: 'Signup',
     isAuthenticated: false,
     errorMessage: message,
-    oldInput:{email:'',password:'',confirmPassword:''},
+    oldInput: { email: '', password: '', confirmPassword: '' },
     validationErrors: [],
   });
 };
@@ -95,28 +95,28 @@ export function getSignup(req, res, next) {
 export function postLogin(req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
-  const errors=validationResult(req);
+  const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(442).render('auth/login', {
       path: '/login',
       pageTitle: 'Login',
       isAuthenticated: false,
       errorMessage: errors.array()[0].msg,
-      oldInput:{email:email,password:password,},
+      oldInput: { email: email, password: password, },
       validationErrors: errors.array(),
     });
   }
   User.findOne({ email: email })
     .then(user => {
-      if (user===null) {
-          return res.status(442).render('auth/login', {
-            path: '/login',
-            pageTitle: 'Login',
-            isAuthenticated: false,
-            errorMessage: "Invalid Email or Password",
-            oldInput:{email:email,password:password,},
-            validationErrors: [],
-          });
+      if (user === null) {
+        return res.status(442).render('auth/login', {
+          path: '/login',
+          pageTitle: 'Login',
+          isAuthenticated: false,
+          errorMessage: "Invalid Email or Password",
+          oldInput: { email: email, password: password, },
+          validationErrors: [],
+        });
       }
       // console.log(user);
       bcrypt.compare(password, user.password)
@@ -125,7 +125,7 @@ export function postLogin(req, res, next) {
             req.session.isLoggedIn = true;
             req.session.user = user;
             return req.session.save(err => {
-              if(err){ console.log(err); }
+              if (err) { console.log(err); }
               res.redirect('/');
             });
           } else {
@@ -134,13 +134,13 @@ export function postLogin(req, res, next) {
               pageTitle: 'Login',
               isAuthenticated: false,
               errorMessage: 'Invalid Password',
-              oldInput:{email:email,password:password,},
+              oldInput: { email: email, password: password, },
               validationErrors: [],
             });
           }
         })
         .catch(err => {
-          if(err){
+          if (err) {
             console.log(err);
           }
           res.redirect('/login');
@@ -163,23 +163,23 @@ export function postSignup(req, res, next) {
       pageTitle: 'Signup',
       isAuthenticated: false,
       errorMessage: errors.array()[0].msg,
-      oldInput:{
-        email:email,
-        password:password,
-        confirmPassword:req.body.confirmPassword
+      oldInput: {
+        email: email,
+        password: password,
+        confirmPassword: req.body.confirmPassword
       },
       validationErrors: errors.array(),
     });
   }
-  
-   bcrypt.hash(password, 12)
-        .then(hashedPassword => {
-          const user = new User({
-            email: email,
-            password: hashedPassword,
-            cart: { items: [] },
-          })
-          return user.save();
+
+  bcrypt.hash(password, 12)
+    .then(hashedPassword => {
+      const user = new User({
+        email: email,
+        password: hashedPassword,
+        cart: { items: [] },
+      })
+      return user.save();
     })
     .then(result => {
       return sgMail.send({
@@ -235,7 +235,7 @@ export function postReset(req, res, next) {
           subject: "Password Reset",
           html: `
         <p>You Requested A Password Reset</p>
-        <p>Click this <a href="http://localhost:3000/reset/${token}">Link</a> to set a new Password</p>
+        <p>Click this <a href="https://isshop.herokuapp.com/reset/${token}">Link</a> to set a new Password</p>
         <p>Note: This link is valide for 5 Minutes Only</p>
         `,
         });
