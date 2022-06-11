@@ -1,6 +1,6 @@
 <p align="center">
   <img 
-    src="/images/logo.png"
+    src="/images/ISShop.gif"
   >
 </p>
 
