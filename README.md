@@ -29,13 +29,14 @@ This project is deployed using Heroku. You can visit the follwing link to use th
 - CSRF Security
 - Database Handling
 - Invoice Download
+- Dark Theme
 
 
 ## Tech Stack
 
 **Client:** Bootstrap, Vanilla Javascript, EJS, CSS
 
-**Server:** Node, Express, MongoDB (with Mongoose), Stripe, SendGrid, PDFkit, Bcrypt
+**Server:** Node, Express, MongoDB (with Mongoose), Stripe, SendGrid, PDFkit, Bcrypt, dark.js
 
 ## Environment Variables
 
