@@ -30,6 +30,12 @@ This project is deployed using Heroku. You can visit the follwing link to use th
 - Invoice Download
 
 
+## Tech Stack
+
+**Client:** Bootstrap, Vanilla Javascript, EJS, CSS
+
+**Server:** Node, Express, MongoDB (with Mongoose), Stripe, SendGrid, PDFkit, Bcrypt
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
