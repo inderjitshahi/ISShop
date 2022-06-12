@@ -3,12 +3,14 @@
 <link rel="stylesheet" href="/css/main.css">
 </head>
 
-<body>
+<body data-set-preferred-mode-onload="true">
 
     <%- include('includes/navigation.ejs') %>
-    <div class="err">
-        <p><h1>Some Error Occurred</h1></p>
-        <p>We are working on fixing this, Sorry for inconvenience</p>
+    <div class="content-wrapper">
+        <div class="err ">
+            <p><h1>Some Error Occurred</h1></p>
+            <p>We are working on fixing this, Sorry for inconvenience</p>
+        </div>
     </div>
 
     <%- include('includes/end.ejs') %>

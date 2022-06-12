@@ -1,23 +1,22 @@
 <%- include('../includes/head.ejs') %>
 
-    <link rel="stylesheet" href="/css/form.css">
     <link rel="stylesheet" href="/css/main.css">
 
     </head>
 
-    <body>
+    <body data-set-preferred-mode-onload="true">
         <%- include('../includes/navigation.ejs') %>
 
-
+        <div class="content-wrapper">
             <% if(errorMessage){ %>
                 <div class="error-message">
                     <%=errorMessage%>
                 </div>
                 <% } %>
-                    <main class="main h4">
-                        <form action="/admin/<%if(editing){%>editProduct<%}else{%>addProduct<%}%>" class="product-form"
+                    <main class="content">
+                        <form action="/admin/<%if(editing){%>editProduct<%}else{%>addProduct<%}%>"
                             method="POST" enctype="multipart/form-data">
-                            <div>
+                            <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" name="title" id="title" class="form-control"
                                     value="<%if(editing || hasError){%><%=prod.title%><%}%>">
@@ -26,18 +25,18 @@
                                 <label for="image">Image</label>
                                 <input type="file" name="image" id="image">
                             </div> -->
-                            <div >
+                            <div class="form-group">
                                 <label for="imgUrl">Image URL</label>
                                 <input type="text" name="imgUrl" id="imgUrl" class="form-control"
                                     value="<%if(editing||hasError){%><%=prod.imgUrl%><%}%>">
                             </div>
-                            <div >
+                            <div class="form-group" >
                                 <label for="price">Price</label>
                                 <!-- Be CareFull about speaces in value field if tyoe is Number -->
                                 <input type="number" name="price" id="price" step="0.01" class="form-control"
                                     value="<%if(editing||hasError){%><%=prod.price%><%}%>">
                             </div>
-                            <div >
+                            <div class="form-group" >
                                 <label for="description">Description</label>
                                 <textarea name="description" id="description" class="form-control"
                                     rows="5"><%if(editing||hasError){%><%=prod.description%><%}%></textarea>
@@ -46,10 +45,11 @@
                                 <input type="hidden" value="<%=prod._id%>" name="productId">
                                 <%}%>
                                     <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                                    <button class="btn btn-success btn-lg" type="submit">
+                                    <button class="btn btn-success" type="submit" class="form-control">
                                         <%if(editing||hasError){%>Update Product<%}else{%>Add Product<%}%>
                                     </button>
                         </form>
                     </main>
+        </div>
 
                     <%- include('../includes/end.ejs') %>

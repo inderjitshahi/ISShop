@@ -1,58 +1,104 @@
-<header class="main-header">
-
+<div class="page-wrapper with-navbar" >
     <!-- /*******************bootstrap Nov *******************************/ -->
+    <nav class="navbar">
+        <a href="/" class="navbar-brand text-secondary font-weight-bold">
+            ISShop
+        </a>
+        <ul class="navbar-nav d-none d-md-flex">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/products">Products</a>
+            </li>
+            <% if(isAuthenticated){ %>
+                <li class="nav-item">
+                    <a class="nav-link " href="/cart">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/orders">Your Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/addProduct">Add Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/products">Admin Product</a>
+                </li>
+                <% } %>
+        </ul>
 
-    <nav class="navbar navbar-expand-lg bg-secondary  bg-gradient text-white h4">
-        <div class="container-fluid">
-            <a class="navbar-brand text-warning" href="/">ISShop</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="/products">Products</a>
-                    </li>
-                    <% if(isAuthenticated){ %>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/cart">Cart</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/orders">Your Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/admin/addProduct">Add Product</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/admin/products">Admin Product</a>
-                    </li>
-                    <% } %> 
-                </ul>
-            </div>
+        <form class="form-inline d-none d-md-flex ml-auto" action="..." method="...">
+            <li class="nav-item">
+                <button class="btn btn-light" type="button" onclick="halfmoon.toggleDarkMode()"><i
+                        class="bi bi-moon-fill"></i></button>
+            </li>
             <% if(!isAuthenticated){ %>
 
-                <li class="navbar-nav">
-                    <a href="/login" class="btn btn-success fw-bolder btn-lg" role="button">Login</a>
+                <li class="nav-item">
+                    <a href="/login" class="btn btn-success fw-bolder" role="button">Login</a>
                 </li>
-                <li class="navbar-nav">
-                    <a class="btn btn-success fw-bolder btn-lg" href="/signup">Signup</a>
+                <li class="nav-item">
+                    <a class="btn btn-success fw-bolder" href="/signup">Signup</a>
                 </li>
                 <% }else{ %>
 
-                    <li class="navbar-nav">
+                    <li class='nav-item'>
                         <form action="/logout" method="post" class="logout-form">
                             <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                            <button class="btn btn-danger fw-bolder btn-lg" type="submit">Logout</button>
+                            <button class="btn btn-danger fw-bolder" type="submit">Logout</button>
                         </form>
                     </li>
                     <% } %>
+        </form>
+
+        <div class="navbar-content d-md-none ml-auto">
+            <!-- d-md-none = display: none on medium screens and up (width > 768px), ml-auto = margin-left: auto -->
+            <div class="dropdown with-arrow">
+                <button class="btn" data-toggle="dropdown" type="button" id="navbar-dropdown-toggle-btn-1">
+                    Menu <i class="bi bi-list"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right w-200" aria-labelledby="navbar-dropdown-toggle-btn-1">
+                    <!-- w-200 = width: 20rem (200px) -->
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" aria-current="page" href="/products">Products</a>
+                    <% if(isAuthenticated){ %>
+                            <a class="nav-link " href="/cart">Cart</a>
+                            <a class="nav-link " href="/orders">Your Orders</a>
+                            <a class="nav-link" href="/admin/addProduct">Add Product</a>
+                            <a class="nav-link" href="/admin/products">Admin Product</a>
+                        <% } %>
+
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-content">
+                        <form>
+                            <li class="nav-item">
+                                <button class="btn btn-light" type="button" onclick="halfmoon.toggleDarkMode()"><i
+                                        class="bi bi-moon-fill"></i></button>
+                            </li>
+                            <% if(!isAuthenticated){ %>
+                
+                                <li class="nav-item">
+                                    <a href="/login" class="btn btn-success fw-bolder" role="button">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-success fw-bolder" href="/signup">Signup</a>
+                                </li>
+                                <% }else{ %>
+                
+                                    <li class='nav-item'>
+                                        <form action="/logout" method="post">
+                                            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                            <button class="btn btn-danger" type="submit">Logout</button>
+                                        </form>
+                                    </li>
+                                    <% } %>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
-</header>
+
 
 
 

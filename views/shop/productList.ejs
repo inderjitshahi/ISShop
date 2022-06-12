@@ -6,11 +6,11 @@
 
     </head>
 
-    <body>
+    <body data-set-preferred-mode-onload="true">
 
         <%- include('../includes/navigation.ejs') %>
 
-            <main>
+            <main class="content-wrapper">
                 <% if(prods.length> 0) { %>
                     <div class="grid">
                         <% prods.forEach((prod)=>{ %>

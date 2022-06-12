@@ -2,24 +2,26 @@
     <link rel="stylesheet" href="/css/main.css">
     </head>
  
-    <body>
+    <body data-set-preferred-mode-onload="true">
 
         <%- include('../includes/navigation.ejs') %>
-            <main class="login-main">
-                <form action="/reset" method="POST" class="login-form container-fluid mt-5 h4">
-                    <% if(errorMessage){ %>
-                        <div class="error-message">
-                            <%=errorMessage%>
-                        </div>
-                        <% } %>
-                                <li class="login-item">
-                                    <label for="email">User/Email</label>
-                                    <input type="text" name="email" id="email" class="form-control">
-                                    <small>After Submitting the form, Please check your <b>Email</b> for Password Reset Link</small>
-                                </li>
-                            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                            <button class="btn btn-success btn-lg" type="submit">Reset Password</button>
-                </form>
+            <main class="content-wrapper">
+                <div class="content">
+                    <form action="/reset" method="POST" class="login-form container-fluid mt-5 h4">
+                        <% if(errorMessage){ %>
+                            <div class="error-message">
+                                <%=errorMessage%>
+                            </div>
+                            <% } %>
+                                    <li class="login-item">
+                                        <label for="email">User/Email</label>
+                                        <input type="text" name="email" id="email" class="form-control">
+                                        <small>After Submitting the form, Please check your <b>Email</b> for Password Reset Link</small>
+                                    </li>
+                                <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                <button class="btn btn-success" type="submit">Reset Password</button>
+                    </form>
+                </div>
             </main>
 
             <%- include('../includes/end.ejs') %>
