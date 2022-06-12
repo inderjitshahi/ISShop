@@ -26,8 +26,7 @@
                 </li>
                 <% } %>
         </ul>
-
-        <form class="form-inline d-none d-md-flex ml-auto" action="..." method="...">
+        <div class="d-none d-md-flex ml-auto">
             <li class="nav-item">
                 <button class="btn btn-light" type="button" onclick="halfmoon.toggleDarkMode()"><i
                         class="bi bi-moon-fill"></i></button>
@@ -43,13 +42,13 @@
                 <% }else{ %>
 
                     <li class='nav-item'>
-                        <form action="/logout" method="post" class="logout-form">
+                        <form action="/logout" method="post">
+                            <button class="btn btn-danger" type="submit">Logout</button>
                             <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                            <button class="btn btn-danger fw-bolder" type="submit">Logout</button>
                         </form>
                     </li>
                     <% } %>
-        </form>
+        </div>
 
         <div class="navbar-content d-md-none ml-auto">
             <!-- d-md-none = display: none on medium screens and up (width > 768px), ml-auto = margin-left: auto -->

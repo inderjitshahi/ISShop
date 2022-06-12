@@ -9,7 +9,7 @@ import Stripe from 'stripe';
 import dotenv from 'dotenv';
 dotenv.config();
 const stripe= new Stripe(process.env.STRIPE_API_KEY);
-const ITEMS_PER_PAGE = 2;
+const ITEMS_PER_PAGE = 6;
 
 export function getProducts(req, res, next) {
     const page = Number(req.query.page ? req.query.page : 1);

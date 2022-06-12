@@ -8,31 +8,33 @@
 <body data-set-preferred-mode-onload="true">
 
     <%- include('../includes/navigation.ejs') %>
-    <main class="content-wrapper">
-        <% if(orders.length>0) {%>
-            <div class="orders">
-                <ul class="order-products">
-                    <% orders.forEach(order => {%> 
-                        
-                    <li class="order">
-                        <h2 class="order-id">Order ID: <%=order._id%> - <a href="/orders/<%=order._id%>">Invoice</a> </h2>
-                        <ul>
-                            <% order.products.forEach(p=>{  %> 
-                                <li class="order-name"><%=p.productData.title%> (<%=p.qty %>) </li>
-                            <% });%> 
-                        </ul>
-                    </li>
-                    <% }); %> 
-                </ul>
-            </div>
-            <!-- <form action="/createOrders" method="POST">
-                <button class="btn" type="submit">Order now</button>
-            </form> -->
-        <% } else { %>
-            <div class="no-order">
-                <h1>No Orders you Placed</h1>
-            </div>
-        <% } %> 
-    </main>
+    <div class="content-wrapper">
+        <div class="content">
+            <% if(orders.length>0) {%>
+                <div class="orders">
+                    <ul class="order-products">
+                        <% orders.forEach(order => {%> 
+                            
+                        <li class="order">
+                            <h2 class="order-id">Order ID: <%=order._id%> - <a href="/orders/<%=order._id%>">Invoice</a> </h2>
+                            <ul>
+                                <% order.products.forEach(p=>{  %> 
+                                    <li class="order-name"><%=p.productData.title%> (<%=p.qty %>) </li>
+                                <% });%> 
+                            </ul>
+                        </li>
+                        <% }); %> 
+                    </ul>
+                </div>
+                <!-- <form action="/createOrders" method="POST">
+                    <button class="btn" type="submit">Order now</button>
+                </form> -->
+            <% } else { %>
+                <div class="no-order">
+                    <h1>No Orders you Placed</h1>
+                </div>
+            <% } %> 
+        </div>
+    
     
     <%- include('../includes/end.ejs') %>

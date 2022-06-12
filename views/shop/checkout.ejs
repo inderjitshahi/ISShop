@@ -8,38 +8,41 @@
     <body data-set-preferred-mode-onload="true">
 
         <%- include('../includes/navigation.ejs') %>
-            <main class="content-wrapper">
-                <div class="cart">
-                    <ul class="cart-products">
-                        <% products.forEach(prod=> {%>
-
-                            <li class="cart-product h3">
-                                <p class="cart-title">
-                                    <%=prod.productId.title%>
-                                </p>
-                                <p class="cart-qty">Quantity: <%=prod.qty%>
-                                </p>
-                            </li>
-                            <% }); %>
-                    </ul>
-                </div>
-                <div class="centered">
-                    <h2>Total: ₹<%=totalSum%>
-                    </h2>
-                </div>
-                <div class="centered">
-                    <button class="btn btn-outline-success btn-lg" id="order-btn">Pay</button>
-                    <script src="https://js.stripe.com/v3/"></script>
-                    <script>
-                        const stripe = Stripe('pk_live_51L8GQISIwKLHciGufNublySIHaC61zZFKRYw6jEARyjWKb1HeQTpy4cJDRG29siBqbvgjyKObJSid5Ya3dUw09Zk0013NqYkYv');
-                        const orderBtn = document.querySelector('#order-btn');
-                        orderBtn.addEventListener('click', (e) => {
-                            stripe.redirectToCheckout({
-                                sessionId: '<%=sessionId%>',
+            <div class="content-wrapper">
+                <div class="content">
+                    <div class="cart">
+                        <ul class="cart-products">
+                            <% products.forEach(prod=> {%>
+    
+                                <li class="cart-product h3">
+                                    <p class="cart-title">
+                                        <%=prod.productId.title%>
+                                    </p>
+                                    <p class="cart-qty">Quantity: <%=prod.qty%>
+                                    </p>
+                                </li>
+                                <% }); %>
+                        </ul>
+                    </div>
+                    <div class="centered">
+                        <h2>Total: ₹<%=totalSum%>
+                        </h2>
+                    </div>
+                    <div class="centered">
+                        <button class="btn btn-success" id="order-btn">Pay</button>
+                        <script src="https://js.stripe.com/v3/"></script>
+                        <script>
+                            const stripe = Stripe('pk_live_51L8GQISIwKLHciGufNublySIHaC61zZFKRYw6jEARyjWKb1HeQTpy4cJDRG29siBqbvgjyKObJSid5Ya3dUw09Zk0013NqYkYv');
+                            const orderBtn = document.querySelector('#order-btn');
+                            orderBtn.addEventListener('click', (e) => {
+                                stripe.redirectToCheckout({
+                                    sessionId: '<%=sessionId%>',
+                                });
                             });
-                        });
-                    </script>
+                        </script>
+                    </div>
+
                 </div>
-            </main>
+    
 
             <%- include('../includes/end.ejs') %>

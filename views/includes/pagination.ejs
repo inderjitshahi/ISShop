@@ -1,5 +1,5 @@
 
-                    <section class="container-fluid text-center mt-5 h3 fw-bold">
+                    <section class="container-fluid text-center mt-5 font-size-22 font-weight-bold">
                         <% if(currentPage!=1 && previousPage!= 1){ %> 
                             <a href="?page=1">1</a>
                         <% } %>
@@ -7,7 +7,7 @@
                                         <%=previousPage%>
                                     </a>
                         <% } %>
-                        <a href="?page=<%=currentPage%>" class="active">
+                        <a href="?page=<%=currentPage%>" class="text-success">
                                     <%=currentPage%>
                         </a>
                         <% if(hasNextPage){ %> <a href="?page=<%=nextPage%>">
