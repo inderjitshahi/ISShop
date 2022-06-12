@@ -29,6 +29,16 @@ ul{
 li{
   list-style: none;
 }
+.gridBox{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  /* border: 2px solid red; */
+  flex-wrap: wrap;
+}
+.del{
+  /* border: 2px solid rgb(60, 255, 0); */
+}
 /* .login-item .invalid{
   border: 2px solid  red;
   background-color: rgb(250, 231, 231);
@@ -124,13 +134,6 @@ li{
     margin: 0;
   }
   
-  .card {
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    width: 25rem;
-    margin: 1rem;
-    height: 33rem;
-  }
   
   .card__header,
   .card__content {

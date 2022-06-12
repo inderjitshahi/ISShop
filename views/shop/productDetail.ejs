@@ -7,30 +7,32 @@
     <body data-set-preferred-mode-onload="true">
 
         <%- include('../includes/navigation.ejs') %>
-            <main class="content-wrapper" >
-                <div class="detail-title">
-                    <h1>
-                        <%=prod.title%>
-                    </h1>
-                </div>
-                <hr>
-                <div class="detail-img">
-                    <img  class="detail-img__img" src="<%= prod.imgUrl %>" alt="<%=prod.title%>" >
-                </div>
-                <div class="detail-price">
-                    <h2>
-                        ₹<%=prod.price%>
-                    </h2>
-                </div>
-                <div class="detail-description">
-                    <p>
-                        <%=prod.description%>
-                    </p>
-                </div>
-                <form action="/cart" method="post" class="detail-form" >
-                    <button class="btn" type="submit">Add To Cart</button>
-                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                    <input type="hidden" name="productId" value = "<%= prod._id %>" >
-                </form>
-            </main>
+            <div class="content-wrapper" >
+                    <din class="card text-center">
+                        <div class="detail-title">
+                            <h1>
+                                <%=prod.title%>
+                            </h1>
+                        </div>
+                        <hr>
+                        <div class="detail-img">
+                            <img  class="detail-img__img w-md-half" src="<%= prod.imgUrl %>" alt="<%=prod.title%>" >
+                        </div>
+                        <div class="detail-price">
+                            <h2>
+                                ₹<%=prod.price%>
+                            </h2>
+                        </div>
+                        <div class="detail-description">
+                            <p>
+                                <%=prod.description%>
+                            </p>
+                        </div>
+                        <form action="/cart" method="post" class="detail-form" >
+                            <button class="btn btn-success" type="submit">Add To Cart</button>
+                            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                            <input type="hidden" name="productId" value = "<%= prod._id %>" >
+                        </form>
+                    </div>
+        
             <%- include('../includes/end.ejs') %>

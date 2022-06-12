@@ -1,7 +1,6 @@
 <%- include('../includes/head.ejs') %>
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/cart.css">
     <script defer src="/js/admin.js"></script>
 
     </head>
@@ -11,19 +10,17 @@
 
             <main class="content-wrapper">
                 <% if(prods.length> 0) { %>
-                    <div class="grid">
+                    <div class="gridBox">
                         <% prods.forEach((prod)=>{ %>
-                            <article class="card w-quarter h-quarter">
-                                <header class="card__header">
-                                    <h1 class="product__title">
+                            <article class="card w-md-quarter h-md-quarter text-center">
+                                    <h1 class="card-title">
                                         <%=prod.title %>
                                     </h1>
-                                </header>
                                 <div class="card__image">
                                     <img src="<%=prod.imgUrl%>" alt="<%=prod.title %>">
                                 </div>
                                 <div class="card__content">
-                                    <h2 class="product__price">₹<%=prod.price%>
+                                    <h2 class="card-title">₹<%=prod.price%>
                                     </h2>
                                     <p class="product__description">
                                         <%=prod.description%>

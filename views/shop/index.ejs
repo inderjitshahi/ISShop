@@ -8,43 +8,45 @@
 
         <%- include('../includes/navigation.ejs') %>
 
-            <main class="content-wrapper">
-                <% if(prods.length> 0) { %>
-                    <div class="grid">
-                        <% prods.forEach((prod)=>{ %>
-                            <article class=" card w-quarter h-quarter">
-                                <header class="card__header">
-                                    <h1 class="product__title">
-                                        <%=prod.title %>
-                                    </h1>
-                                </header>
-                                <div class="card__image">
-                                    <img src="<%=prod.imgUrl%>" alt="<%=prod.title %>">
-                                </div>
-                                <div class="card__content">
-                                    <h2 class="product__price">₹<%=prod.price%>
-                                    </h2>
-                                    <p class="product__description">
-                                        <%=prod.description%>
-                                    </p>
-                                </div>
-                                <div class="card__actions">
-                                    <form action="/cart" method="post">
-                                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                                        <button class="btn btn-success"  type="submit">Add To Cart</button>
-                                        <input type="hidden" name="productId" value="<%= prod._id %>">
-                                    </form>
-                                </div>
-                            </article>
-                            <% }); %>
-                    </div>
-            <%- include('../includes/pagination.ejs',{currentPage:currentPage,nextPage:nextPage,previousPage:previousPage,lastPage:lastPage,hasNextPage:hasNextPage,hasPreviousPage:hasPreviousPage}) %>
+            <div class="content-wrapper">
+                <div class="content"></div>
+                    <% if(prods.length> 0) { %>
+                        <div class="gridBox">
+                                <% prods.forEach((prod)=>{ %>
+                                    <article class=" card h-sm-quarter w-sm-quarter text-center border">
+                                        <h2 class="card-title">
+                                            <%=prod.title %>
+                                        </h2>
+                                        <div class="card__image">
+                                            <img src="<%=prod.imgUrl%>" alt="<%=prod.title %>">
+                                        </div>
+                                        <div class="card__content">
+                                            <h2 class="card-title">₹<%=prod.price%>
+                                            </h2>
+                                            <p class="product__description">
+                                                <%=prod.description%>
+                                            </p>
+                                        </div>
+                                        <div class="card__actions">
+                                            <form action="/cart" method="post">
+                                                <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                                <button class="btn btn-success" type="submit">Add To Cart</button>
+                                                <input type="hidden" name="productId" value="<%= prod._id %>">
+                                            </form>
+                                        </div>
+                                    </article>
+                                <% }); %>
+                        </div>
+                </div> 
+
+                        <%- include('../includes/pagination.ejs',{currentPage:currentPage,nextPage:nextPage,previousPage:previousPage,lastPage:lastPage,hasNextPage:hasNextPage,hasPreviousPage:hasPreviousPage})
+                        %>
 
                     <% } else{ %>
                         <div class="not_found">
                             <h1>No Products Found!</h1>
                         </div>
-                        <% } %>
-            </main>
+                <% } %>
 
-            <%- include('../includes/end.ejs') %>
+
+    <%- include('../includes/end.ejs') %>
