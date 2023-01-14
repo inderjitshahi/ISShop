@@ -15,10 +15,10 @@ Note: Never make payment, as this only a prototype website only.
 
 ## Deployment
 
-This project is deployed using Heroku. You can visit the follwing link to use the app
-
-
-  [Website](https://isshop.herokuapp.com)
+- Clone the project and write "npm i" in the terminal
+- After all dependencies initialization, press npm start
+- this will start nodemon server locally at port 3000
+- That's it, Congratulations you ready to explore the projects
 
 
 ## Features
@@ -34,7 +34,7 @@ This project is deployed using Heroku. You can visit the follwing link to use th
 
 ## Tech Stack
 
-**Client:** Bootstrap, Vanilla Javascript, EJS, CSS
+**Client:** Bootstrap,Halfmoon, Vanilla Javascript, EJS, CSS
 
 **Server:** Node, Express, MongoDB (with Mongoose), Stripe, SendGrid, PDFkit, Bcrypt, dark.js
 

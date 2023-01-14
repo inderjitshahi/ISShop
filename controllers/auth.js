@@ -1,12 +1,11 @@
 import User from '../models/user.js';
 import bcrypt from 'bcryptjs';
-import sgMail from '@sendgrid/mail';
 import crypto from 'crypto';
 import { validationResult } from 'express-validator';
+import sgMail from '@sendgrid/mail';
 import dotenv from 'dotenv';
 dotenv.config();
 const API_KEY = process.env.SENDGRID_API_KEY;
-// import otp from 'otp-generator';
 sgMail.setApiKey(API_KEY);
 
 
