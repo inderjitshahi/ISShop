@@ -1,9 +1,11 @@
 <p align="center">
-  <img 
-     width="500"
-    height="200"
-    src="/images/ISShop.gif"
-  >
+  <a href="https://isshop1.onrender.com/">
+    <img 
+       width="500"
+      height="200"
+      src="/images/ISShop.gif"
+    > 
+  </a>
 </p>
 
 #
@@ -14,7 +16,7 @@ enhance their business, fully encrypted with security features.
 Note: Never make payment, as this only a prototype website only.
 
 ## Deployment
-
+Check out [live demo](https://isshop1.onrender.com/).
 - Clone the project and write "npm i" in the terminal
 - After all dependencies initialization, press npm start
 - this will start nodemon server locally at port 3000
